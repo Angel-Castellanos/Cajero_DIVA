@@ -41,6 +41,8 @@ int main(){
 
         cin >> id;
 
+        cout << "\033[2J\033[1;1H";
+
         if(id == 91){
             return 0;
         }
@@ -48,6 +50,8 @@ int main(){
         cout << "Introduce tu contraseña: " << endl;
 
         cin >> password;
+
+        cout << "\033[2J\033[1;1H";
 
         actual.first = id;
         actual.second = password;
@@ -69,10 +73,12 @@ int main(){
 void menu(pair<int, string> &user){
 
     int op;
+    bool flag;
     float can;
     pair<int, string> targetuser;
 
     do {
+        cout << "\033[2J\033[1;1H";
 
         cout << "Bienvenido al Cajero DIVA." << endl;
         cout << "\n"; 
@@ -122,8 +128,18 @@ void menu(pair<int, string> &user){
                     }
                     else{
 
-                        depositar(user, can);
+                        cout << "Desea depositar " << can << " a su cuenta?" << endl;
+                        cout << "1: SI"<< endl;
+                        cout << "0: NO"<< endl;
 
+                        cin >> flag;
+
+                        if(flag){
+                            depositar(user, can);
+                        }
+                        else{
+                            break;
+                        }
                     }
                 }
             }while(can<0);
@@ -224,7 +240,7 @@ void menu(pair<int, string> &user){
 
 void depositar(pair<int, string> user, float cantidad){
     usuarios[user] += cantidad; 
-    cout << "Deposito de $" << cantidad << "exitoso";
+    cout << "Deposito de $" << cantidad << " exitoso";
 }
 
 void retirar(pair<int, string> user, float cantidad){
