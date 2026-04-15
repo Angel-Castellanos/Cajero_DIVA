@@ -9,6 +9,7 @@ void retirar(pair<int,string>, float);
 void modificarPin(pair<int,string> &);
 bool validarPin(string);
 void transferir(pair<int, string> &, pair<int, string> &, float);
+void clear();
 
 map<pair<int,string>, int> limite;
 map<pair<int,string>, float> usuarios;
@@ -41,7 +42,7 @@ int main(){
 
         cin >> id;
 
-        cout << "\033[2J\033[1;1H";
+        clear();
 
         if(id == 91){
             return 0;
@@ -51,7 +52,7 @@ int main(){
 
         cin >> password;
 
-        cout << "\033[2J\033[1;1H";
+        clear();
 
         actual.first = id;
         actual.second = password;
@@ -78,7 +79,8 @@ void menu(pair<int, string> &user){
     pair<int, string> targetuser;
 
     do {
-        cout << "\033[2J\033[1;1H";
+
+        clear();
 
         cout << "Bienvenido al Cajero DIVA." << endl;
         cout << "\n"; 
@@ -330,4 +332,10 @@ void transferir(pair<int, string> &from, pair<int, string> &to, float can){
         cout << "No se encontró la cuenta destino" << endl;
         return;
     }
+}
+
+void clear(){
+
+    cout << "\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n";
+
 }
