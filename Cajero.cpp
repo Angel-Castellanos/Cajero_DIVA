@@ -54,6 +54,7 @@ int main(){
 
         if(usuarios.find(actual) != usuarios.end()){
 
+            cout << "Inicio de sesion exitoso" << endl;
             menu(actual);
 
         } else {
@@ -223,12 +224,15 @@ void menu(pair<int, string> &user){
 
 void depositar(pair<int, string> user, float cantidad){
     usuarios[user] += cantidad; 
+    cout << "Deposito de $" << cantidad << "exitoso";
 }
 
 void retirar(pair<int, string> user, float cantidad){
     
     if(usuarios[user]>=cantidad){
         usuarios[user] -= cantidad;
+        cout <<" Retiro de $" << cantidad << " exitoso" << endl; 
+
     }else{
         cout << "No hay saldo suficiente" << endl;
     }
